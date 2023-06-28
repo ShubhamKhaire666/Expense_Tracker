@@ -9,11 +9,13 @@ namespace Expense_Tracker.Data
 {
     public class Expense_TrackerContext : DbContext
     {
-        public Expense_TrackerContext (DbContextOptions<Expense_TrackerContext> options)
+        public Expense_TrackerContext (DbContextOptions options)
             : base(options)
         {
         }
 
-        public DbSet<Expense_Tracker.Models.Category> Category { get; set; } = default!;
+        public DbSet<Category> Category { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+
     }
 }
