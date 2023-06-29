@@ -1,18 +1,50 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #12161d;
+    color: #fff;
 }
+
+e-bigger {
+    font-size: x-large;
+}
+
+
+/*Radio-button-group*/
+
+.e-btn-group.custom-rbt-group{
+    width:100%;
+}
+
+.e-btn-group.custom-rbt-group .e-btn{
+    width:50%;
+}
+
+.custom-rbt-group label.e-btn{
+    box-shadow:none !important;
+    border: 1px solid #fff;
+    background-color:rgb(34 43 51);
+    color:#fff;
+}
+
+.e-btn-group.custom-rbt-group input:checked + label.e.e-btn{
+    background-color:#fff;
+    color:#212b36;
+    border:1px solid #fff;
+}
+
+
