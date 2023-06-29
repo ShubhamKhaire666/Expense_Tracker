@@ -11,7 +11,7 @@
 		<div class="widget p-5">
 			<form asp-action="AddOrEdit">
 				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-				<input type="hidden" name="CategoryId" value="CategoryId" />
+				<input type="hidden" name="CategoryId" value="@Model.CategoryId" />
 				<div class="mb-3">
 					<div class='e-btn-group custom-rbt-group'>
 						<input type="radio" id="radioleft" name="Type" value="Expense" checked="@(Model.Type=="Expense")" />
@@ -33,11 +33,13 @@
 			</form>
 		</div>
 	</div>
+	<div class="col-md-5">
+		<div class="widget h-100 d-flex justify-content-center align-items-center" style="background-color:#212b36">
+			<i class="fa-solid fa-shapes fa-2"></i>
+		</div>
+	</div>
 </div>
 
-<div>
-	<a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
 	@{
