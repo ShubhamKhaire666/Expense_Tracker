@@ -12,7 +12,7 @@ namespace Expense_Tracker.Models
 
         //Category Id
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
         public int Amount { get; set; }
 
         [Column(TypeName = "nvarchar(75)")]

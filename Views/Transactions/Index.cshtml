@@ -40,7 +40,7 @@
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.TransactionId">Edit</a> |
+                <a asp-action="AddOrEdit" asp-route-id="@item.TransactionId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.TransactionId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.TransactionId">Delete</a>
             </td>
