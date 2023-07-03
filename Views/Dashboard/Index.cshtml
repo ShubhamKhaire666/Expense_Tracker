@@ -17,8 +17,8 @@
 				<h1 class="display-6 fw-bold">@ViewBag.TotalIncome</h1>
 			</div>
 		</div>
-		</div>
-		<div class="col-md-4">
+	</div>
+	<div class="col-md-4">
 		<div class="d-flex flex-row widget summary expense">
 			<div class="d-flex flex-column justify-content-center p-5">
 				<i class="fa-solid fa-dollar-sign fa-2xl"></i>
@@ -28,8 +28,8 @@
 				<h1 class="display-6 fw-bold">@ViewBag.TotalExpense</h1>
 			</div>
 		</div>
-		</div>
-		<div class="col-md-4">
+	</div>
+	<div class="col-md-4">
 		<div class="d-flex flex-row widget summary balance">
 			<div class="d-flex flex-column justify-content-center p-5">
 				<i class="fa-solid fa-dollar-sign fa-2xl"></i>
@@ -37,6 +37,88 @@
 			<div class="d-flex flex-column m-auto p-3">
 				<span class="lead">Balance</span>
 				<h1 class="display-6 fw-bold">@ViewBag.Balance</h1>
+			</div>
+		</div>
+	</div>
+</div>
+
+@*donut chart and spline chart*@
+
+<div class="row mb-4">
+	<div class="col-md-4">
+		<div class="p-4">
+			<h5 class="fw-bold">Expense by category</h5>
+		</div>
+		<ejs-accumulationchart id="donutchart" background="#1a222b" enableSmartLabels>
+			<e-accumulation-series-collection>
+				<e-accumulation-series dataSource="@ViewBag.DonutChartData"
+									   xName="categoryTitleWithIcon" yName="amount" legendShape=Circle innerRadius="60%">
+					<e-accumulationseries-datalabel name="formattedAmount" visible></e-accumulationseries-datalabel>
+				</e-accumulation-series>
+			</e-accumulation-series-collection>
+			<e-accumulationchart-legendsettings position="Top">
+				<e-legendsettings-textstyle color="#fff" size="1rem"></e-legendsettings-textstyle>
+			</e-accumulationchart-legendsettings>
+			<e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings>
+		</ejs-accumulationchart>
+	</div>
+	<div class="col-md-8">
+		<div class="p-4">
+			<h5 class="fw-bold">Income Vs. Expense</h5>
+		</div>
+		<ejs-chart id="splineChart" background="#1a222b"
+				   palettes="@(new string[]{"#54ffa9","#ffe91a"})">
+			<e-chart-primaryxaxis valueType=Category>
+				<e-majorgridlines width="0"></e-majorgridlines>
+				<e-majorticklines width="0"></e-majorticklines>
+			</e-chart-primaryxaxis>
+			<e-chart-primaryyaxis>
+				<e-majorgridlines width="1" color="#32414d" dashArray="3,5"></e-majorgridlines>
+				<e-majorticklines width="0"></e-majorticklines>
+				<e-linestyle width="0"></e-linestyle>
+			</e-chart-primaryyaxis>
+			<e-chart-chartarea>
+				<e-chartarea-border width="0"></e-chartarea-border>
+			</e-chart-chartarea>
+			<e-series-collection>
+				<e-series dataSource="@ViewBag.SplineChartData" xName="day" width="3"
+						  yName="income" name="Income" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline"></e-series>
+				<e-series dataSource="@ViewBag.SplineChartData" xName="day" width="3"
+						  yName="expense" name="Expense" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline"></e-series>
+			</e-series-collection>
+			<e-chart-legendsettings position="Top" alignment="Far">
+				<e-legendsettings-textstyle color="#fff" size="1rem"></e-legendsettings-textstyle>
+			</e-chart-legendsettings>
+			<e-chart-tooltipsettings enable shared></e-chart-tooltipsettings>
+
+		</ejs-chart>
+	</div>
+</div>
+
+@*Recent Transaction*@
+<div class="row">
+	<div class="col-md-6">
+		<div class="widget">
+			<div class="p-4">
+				<h5 class="fw-bold">Recent Transaction</h5>
+			</div>
+			<div class="px-4 pb-4">
+				<ejs-grid id="recentTransaction" 
+				gridLines="None" dataSource="@ViewBag.RecentTransaction">
+					<e-grid-columns>
+						<e-grid-column headerText="Category" field="CategoryTitleWithIcon"></e-grid-column>
+						<e-grid-column headerText="Date" field="Date" format="MMM-dd-yy" type="date"
+									   textAlign="Left" width="150px"></e-grid-column>
+						<e-grid-column headerText="Amount" textAlign="Right" field="FormattedAmount" width="100px"></e-grid-column>
+					</e-grid-columns>
+				</ejs-grid>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="widget h-100">
+			<div class="d-flex h-100 justify-content-center align-items-center">
+				<span><i class="fa-solid fa-plus fa-2xl">Widget</i></span>
 			</div>
 		</div>
 	</div>
