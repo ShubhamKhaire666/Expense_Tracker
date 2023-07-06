@@ -27,7 +27,6 @@ namespace Expense_Tracker.Controllers
                         Problem("Entity set 'Expense_TrackerContext.Category'  is null.");
         }
 
-
         // GET: Categories/AddOrEdit
         public IActionResult AddOrEdit(int id = 0)
         {
